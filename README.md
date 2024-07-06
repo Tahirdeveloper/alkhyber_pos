@@ -1,9 +1,6 @@
 <p align="center">
     <h1 align="center">POS System Using Laravel</h1>
 </p>
-
-The project was created while recording video "[Create POS System Using Laravel](https://www.youtube.com/watch?v=Y_NRk0lOOJc&list=PL2hV0q47BY-G9f5xG9Vq-wGjSyy1BekOv)"
-
 ## Installation
 
 ### Requirements
@@ -48,25 +45,24 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 ### Run Server
 
 1. `php artisan serve` or Laravel Homestead
-1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com`, Password: `admin123`.
-1. Online demo: [pos.khmernokor.com](https://pos.khmernokor.com/)
+1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com`, Password: `88888888`.
+
 
 ### Screenshots
 
 #### Product list
 
-![Product list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/products_list.png)
+![Product list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/dashboard.png)
 
 #### Create order
 
-![Create order](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/pos.png)
+![Create order](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/POS.png)
 
 #### Order list
 
-![Order list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/order_list.png)
+![Order list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/sales.png)
 
 #### Customer list
 
-![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/customer_list.png)
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/angkosal)
+![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/invoice.png)
+![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/reports.png)
