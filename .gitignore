@@ -5,6 +5,7 @@
 /storage/*.key
 /database/migrations
 /vendor
+alkhair_tea.sql
 .env
 .env.backup
 .env.production
