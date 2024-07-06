@@ -50,19 +50,20 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 
 ### Screenshots
 
-#### Product list
+#### Dashboard
 
-![Product list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/dashboard.png)
+![Dashboard](https://github.com/Tahirdeveloper/alkhyber_pos/blob/master/screenshots/dashboard.png)
 
-#### Create order
+#### Point of Sale
 
-![Create order](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/POS.png)
+![Point of Sale](https://github.com/Tahirdeveloper/alkhyber_pos/blob/master/screenshots/POS.png)
 
 #### Order list
 
-![Order list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/sales.png)
+![Sales](https://github.com/Tahirdeveloper/alkhyber_pos/blob/master/screenshots/sales.png)
 
-#### Customer list
+#### Invoice PDF
 
-![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/invoice.png)
-![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/reports.png)
+![Invoice PDF](https://github.com/Tahirdeveloper/alkhyber_pos/blob/master/screenshots/invoice.png)
+#### Sales Report
+![Sales Report](https://github.com/Tahirdeveloper/alkhyber_pos/blob/master/screenshots/reports.png)
