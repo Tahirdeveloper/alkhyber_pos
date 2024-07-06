@@ -1,0 +1,141 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\CustomerStoreRequest;
+use App\Models\Customer;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class CustomerController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id=1)
+    {
+        if (request()->wantsJson()) {
+            return response(
+                Customer::where("role","customer")->get()
+            );
+        }
+        if(session()->has('supplier_id')){
+            $id = session('supplier_id');
+        }
+        $customers = Customer::where("role","customer")->latest()->paginate(10);
+        return view('customers.index',compact('customers','id'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $id=1;
+        return view('customers.create',compact('id'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CustomerStoreRequest $request)
+    {
+        $avatar_path = '';
+
+        if ($request->hasFile('avatar')) {
+            $avatar_path = $request->file('avatar')->store('customers', 'public');
+        }
+
+        $customer = Customer::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'role'  =>$request->role,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'avatar' => $avatar_path,
+            'user_id' => $request->user()->id,
+        ]);
+
+        if (!$customer) {
+            return redirect()->back()->with('error', 'Sorry, there\'re a problem while creating customer.');
+        }
+        return redirect()->route('customers.index')->with('success', 'Success, your customer have been created.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Customer  $customer
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Customer $customer)
+    {
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Customer  $customer
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Customer $customer)
+    {
+        $id = 1;
+        return view('customers.edit', compact('customer','id'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Customer  $customer
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Customer $customer)
+    {
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->email = $request->role;
+        $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+
+        if ($request->hasFile('avatar')) {
+            // Delete old avatar
+            if ($customer->avatar) {
+                Storage::delete($customer->avatar);
+            }
+            // Store avatar
+            $avatar_path = $request->file('avatar')->store('customers', 'public');
+            // Save to Database
+            $customer->avatar = $avatar_path;
+        }
+
+        if (!$customer->save()) {
+            return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating customer.');
+        }
+        return redirect()->route('customers.index')->with('success', 'Success, your customer have been updated.');
+    }
+
+    public function destroy(Customer $customer)
+    {
+        if ($customer->avatar) {
+            Storage::delete($customer->avatar);
+        }
+
+        $customer->delete();
+
+       return response()->json([
+           'success' => true
+       ]);
+    }
+}
